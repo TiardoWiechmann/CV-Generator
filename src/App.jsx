@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./styles/App.css";
 import Section from "./components/form/Section";
 import cvData from "./js/cvData";
-import GenerateCV from "./components/cv/GenerateCV";
+import CV from "./components/cv/CV";
 import { createFormSections } from "./js/formSections";
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
 
   return showCV ? (
     <>
-      <GenerateCV data={cv} />
+      <CV data={cv} />
       <div className="btns">
         <button type="button" onClick={() => setShowCV(false)}>
           Edit
@@ -35,7 +35,7 @@ function App() {
     </>
   ) : (
     <form>
-      <h1>CV Application</h1>
+      <h1>CV Generator</h1>
       <Section
         className="section"
         heading={formSections.general.heading}

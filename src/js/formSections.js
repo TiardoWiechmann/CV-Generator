@@ -9,7 +9,7 @@ export function createFormSections(cv, handleChange) {
             placeholder: "Tom Taylor",
             value: cv.personal.name,
             onChange: (e) => {
-            handleChange("personal", "name", e.target.value);
+                handleChange("personal", "name", e.target.value);
             },
         },
         {
@@ -19,7 +19,7 @@ export function createFormSections(cv, handleChange) {
             placeholder: "tom@taylor.gmail.com",
             value: cv.personal.email,
             onChange: (e) => {
-            handleChange("personal", "email", e.target.value);
+                handleChange("personal", "email", e.target.value);
             },
         },
         {
@@ -29,14 +29,18 @@ export function createFormSections(cv, handleChange) {
             placeholder: "0123456789",
             value: cv.personal.phone,
             onChange: (e) => {
-            handleChange("personal", "phone", e.target.value);
+                handleChange("personal", "phone", e.target.value);
             },
         },
         {
             id: "image",
             label: "Image: ",
             type: "file",
-            accept: "image/*"
+            accept: "image/*",
+            path: cv.personal.image,
+            onChange: (e) => {
+                handleChange("personal", "image", e.target.files[0]);
+            },
         },
         ],
     };
@@ -51,7 +55,7 @@ export function createFormSections(cv, handleChange) {
             placeholder: "Humboldt University of Berlin",
             value: cv.education.schoolName,
             onChange: (e) => {
-            handleChange("education", "schoolName", e.target.value);
+                handleChange("education", "schoolName", e.target.value);
             },
         },
         {
@@ -61,7 +65,7 @@ export function createFormSections(cv, handleChange) {
             placeholder: "Computer Science",
             value: cv.education.studyTitle,
             onChange: (e) => {
-            handleChange("education", "studyTitle", e.target.value);
+                handleChange("education", "studyTitle", e.target.value);
             },
         },
         {
@@ -70,7 +74,7 @@ export function createFormSections(cv, handleChange) {
             type: "date",
             value: cv.education.dosF,
             onChange: (e) => {
-            handleChange("education", "dosF", e.target.value);
+                handleChange("education", "dosF", e.target.value);
             },
         },
         {
@@ -79,7 +83,7 @@ export function createFormSections(cv, handleChange) {
             type: "date",
             value: cv.education.dosU,
             onChange: (e) => {
-            handleChange("education", "dosU", e.target.value);
+                handleChange("education", "dosU", e.target.value);
             },
         },
         ],
@@ -95,7 +99,7 @@ export function createFormSections(cv, handleChange) {
             placeholder: "SAP",
             value: cv.experience.companyName,
             onChange: (e) => {
-            handleChange("experience", "companyName", e.target.value);
+                handleChange("experience", "companyName", e.target.value);
             },
         },
         {
@@ -105,7 +109,7 @@ export function createFormSections(cv, handleChange) {
             placeholder: "Senior Software Developer",
             value: cv.experience.posTitle,
             onChange: (e) => {
-            handleChange("experience", "posTitle", e.target.value);
+                handleChange("experience", "posTitle", e.target.value);
             },
         },
         {
@@ -115,7 +119,7 @@ export function createFormSections(cv, handleChange) {
             placeholder: "Project Management",
             value: cv.experience.mainResp,
             onChange: (e) => {
-            handleChange("experience", "mainResp", e.target.value);
+                handleChange("experience", "mainResp", e.target.value);
             },
         },
         {
@@ -124,7 +128,7 @@ export function createFormSections(cv, handleChange) {
             type: "date",
             value: cv.experience.workedF,
             onChange: (e) => {
-            handleChange("experience", "workedF", e.target.value);
+                handleChange("experience", "workedF", e.target.value);
             },
         },
         {
@@ -133,7 +137,7 @@ export function createFormSections(cv, handleChange) {
             type: "date",
             value: cv.experience.workedU,
             onChange: (e) => {
-            handleChange("experience", "workedU", e.target.value);
+                handleChange("experience", "workedU", e.target.value);
             },
         },
         ]

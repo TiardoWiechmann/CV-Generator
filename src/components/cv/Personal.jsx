@@ -1,11 +1,13 @@
 export default function Personal({data}) {
     return (
-        <>
+        <div className="cv-section">
             <h2>General Information</h2>
-            <p>Name: {data.name}</p>
-            <p>Email: {data.email}</p>
-            <p>Phone: {data.phone}</p>
-            {/* TODO Image */}
-        </>
+            <p><span>Name:</span><span>{data.name}</span></p>
+            <p><span>Email:</span><span>{data.email}</span></p>
+            <p><span>Phone:</span><span>{data.phone}</span></p>
+            {data.image ? 
+                <img src={URL.createObjectURL(data.image)} alt="profile"/>
+                : null}
+        </div>
     );
 }

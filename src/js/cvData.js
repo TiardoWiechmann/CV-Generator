@@ -3,6 +3,7 @@ const cvData = {
         name: "",
         email: "",
         phone: "",
+        image: ""
     },
     education: {
         schoolName: "",

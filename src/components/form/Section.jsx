@@ -1,8 +1,8 @@
 export default function Section({heading, inputs}) {
     return (
-        <div>
+        <div className="input-section">
             <h2>{heading}</h2>
-            <div className="general">
+            <div className="inputs">
                 {inputs.map(input => (
                     <Input key={input.id} {...input}/>
                 ))}
@@ -11,15 +11,18 @@ export default function Section({heading, inputs}) {
     );
 }
 
-function Input({placeholder=null, label, accept="", ...data}) {
+function Input({placeholder=null, label, ...data}) {
+    const selectedFile = data.type === "file" ? data.path : null;
     return (
-    <div>
-        <label htmlFor={data.id}>{label}</label>
-        <input 
-            {...data}
-            placeholder={placeholder}
-            accept={accept}
-        />
-    </div>
+        <div>
+            <label htmlFor={data.id}>{label}</label>
+            <input 
+                {...data}
+                placeholder={placeholder}
+            />
+             {selectedFile && (
+                <p>Chosen File:{selectedFile.name}</p>
+             )}
+        </div>
     );
 }

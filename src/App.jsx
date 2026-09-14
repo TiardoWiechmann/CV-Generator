@@ -1,42 +1,61 @@
-import { useState } from 'react'
-import './App.css'
-import Section from './components/Section'
+import { useState } from "react";
+import "./styles/App.css";
+import Section from "./components/form/Section";
+import cvData from "./js/cvData";
+import GenerateCV from "./components/cv/GenerateCV";
+import { createFormSections } from "./js/formSections";
 
 function App() {
-  const genHeading = "General Information";
-  const genInputs = [
-    {id: "name", label: "Name: ", type: "text", placeholder: "Tom Taylor"},
-    {id: "email", label: "Email: ", type: "email", placeholder: "tom@taylor.gmail.com"},
-    {id: "phone", label: "Phone: ", type: "phone" ,placeholder: "0123456789"},
-  ];
+  const [cv, setCV] = useState(cvData);
+  const [showCV, setShowCV] = useState(false);
 
-  const eduHeading = "Educational Experience";
-  const eduInputs = [
-    {id: "school-name", label: "School Name: ", type: "text", placeholder:"Humboldt University of Berlin"},
-    {id: "study-title", label: "Title Of Study: ", type: "text", placeholder: "Computer Science"},
-    {id: "dos-f", label: "Date Of Study (from): ", type: "date"},
-    {id: "dos-u", label: "Date Of Study (until): ", type: "date"},
-  ];
+  const formSections = createFormSections(cv, handleChange);
 
-  const praHeading = "Practical Experience";
-  const praInputs = [
-    {id: "company-name", label: "Company Name: ", type: "text", placeholder:"SAP"},
-    {id: "pos-title", label: "Position Title: ", type: "text", placeholder: "Senior Software Developer"},
-    {id: "main-resp", label: "Main Responsibility: ", type: "text", placeholder: "Project Management"},
-    {id: "w-from", label: "Worked Here From: ", type: "date"},
-    {id: "w-until", label: "Worked Here Until: ", type: "date"},
-  ];
+  function handleChange(section, field, value) {
+    setCV((currentCV) => ({
+      ...currentCV,
+      [section]: {
+        ...currentCV[section],
+        [field]: value,
+      },
+    }));
+  }
 
-
-  return (
+  return showCV ? (
+    <>
+      <GenerateCV data={cv} />
+      <div className="btns">
+        <button type="button" onClick={() => setShowCV(false)}>
+          Edit
+        </button>
+        <button type="button" onClick={() => window.print()}>
+          Save/Print
+        </button>
+      </div>
+    </>
+  ) : (
     <form>
       <h1>CV Application</h1>
-      <Section class="section" heading={genHeading} inputs={genInputs}/>
-      <Section class="section" heading={eduHeading} inputs={eduInputs}/>
-      <Section class="section" heading={praHeading} inputs={praInputs}/>
-      <button>Generate CV</button>
+      <Section
+        className="section"
+        heading={formSections.general.heading}
+        inputs={formSections.general.inputs}
+      />
+      <Section
+        className="section"
+        heading={formSections.education.heading}
+        inputs={formSections.education.inputs}
+      />
+      <Section
+        className="section"
+        heading={formSections.experience.heading}
+        inputs={formSections.experience.inputs}
+      />
+      <button type="button" onClick={() => setShowCV(true)}>
+        Generate CV
+      </button>
     </form>
-  )
+  );
 }
 
-export default App
+export default App;

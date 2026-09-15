@@ -1,16 +1,31 @@
-# React + Vite
+# CV Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A small React application for creating a CV from a form. Enter personal details,
+education, and practical experience, then switch to a clean preview that can be
+printed or saved as a PDF through the browser print dialog.
 
-Currently, two official plugins are available:
+This project was created with the goal of practicing React, CSS and JavaScript.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## React Compiler
+## Built with
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- [React](https://react.dev/)
+- [Vite](https://vite.dev/)
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Project structure
+
+```text
+src/
+├── components/
+│   ├── cv/             # CV preview and its personal, education, and experience sections
+│   └── form/           # Reusable form-section and input rendering
+├── js/
+│   ├── cvData.js       # Initial CV data shape
+│   ├── formSections.js # Form field definitions and change handlers
+│   └── formatDate.js   # Date formatting for the preview
+├── styles/             # Application and global styles
+├── App.jsx             # Application state and form/preview toggle
+└── main.jsx            # React entry point
+```
+
